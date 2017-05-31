@@ -421,7 +421,7 @@ class GChat(commands.Command):
         for client_data in data.clients.connectedClients.values():
             if client_data.preferences.get_preference('globalChat') and client_data.get_handle() is not None:
                 if lookup_gchatmode(client_data.preferences) == 0:
-                    client_data.get_handle().send_crypto_packet(packetFactory.TeamChatPacket(client.playerId, "[%s] %s" % (shipl, data.players.playerList[client.playerId][0]), data.players.playerList[client.playerId][0], "{vio}%s%s" % (client_data.preferences.get_preference('globalChatPrefix'), self.args[3:])).build())
+                    client_data.get_handle().send_crypto_packet(packetFactory.TeamChatPacket(client.playerId, "[%s] %s" % (shipl, data.players.playerList[client.playerId][0]), data.players.playerList[client.playerId][0], "%s%s" % (client_data.preferences.get_preference('globalChatPrefix'), self.args[3:])).build())
                 else:
                     client_data.get_handle().send_crypto_packet(packetFactory.SystemMessagePacket("[%s] <%s> %s" % (shipl, data.players.playerList[client.playerId][0], "%s%s" % (client_data.preferences.get_preference('globalChatPrefix'), self.args[3:])), 0x3).build())
 
