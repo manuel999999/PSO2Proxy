@@ -188,7 +188,7 @@ def CheckupURL():
 			if Modified_Header:
 			   HTTPHeaderX.addRawHeader('If-Modified-Since', Modified_Header)
 			#EQ0 = agent.request('GET', eq_URL, HTTPHeaderX)
-		EQ0 = agent.request('GET', eq_URL)
+			EQ0 = agent.request('GET', eq_URL)
 			EQ0.addCallback(EQResponse)
 			EQ0.addErrback(log.err)
 	except Exception as ex1
