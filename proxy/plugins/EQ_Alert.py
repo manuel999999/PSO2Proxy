@@ -176,12 +176,11 @@ def EQResponse(response):
 
 def CheckupURL():
     #HTTPHeader0 = Headers({'User-Agent': ['PSO2Proxy']}) #We need to send a User-Agent
-    eq_URL = None
 	if eqalert_config.key_exists('api'):
         eq_URL = eqalert_config.get_key('api')
     #else:
     #    eq_URL = None
-    if eq_URL:
+    #if eq_URL:
         #HTTPHeaderX = HTTPHeader0.copy()
         #if ETag_Header:
         #    HTTPHeaderX.addRawHeader('If-None-Match', ETag_Header)
