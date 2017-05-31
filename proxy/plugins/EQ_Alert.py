@@ -191,8 +191,8 @@ def CheckupURL():
 			EQ0 = agent.request('GET', eq_URL)
 			EQ0.addCallback(EQResponse)
 			EQ0.addErrback(log.err)
-	except Exception as ex1
-		print("[EQ Alert] Opps Sorry, %s" % e)
+	except Exception as ex1:
+		print("[EQ Alert] Opps Sorry, %s" % ex1)
 
 @plugins.on_start_hook
 def on_start():
