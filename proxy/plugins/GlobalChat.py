@@ -213,11 +213,11 @@ def check_config(user):
             client_preferences.set_preference("globalChatPrefix", gchatSettings['prefix'])
         if client_preferences.get_preference('globalChat'):
             user.send_crypto_packet(packetFactory.SystemMessagePacket(
-                "[Proxy] {yel}Use %sg <Message> to chat in Global. Respect and don't flood." % (config.globalConfig.get_key('commandPrefix')),
+                "{yel}Use %sg <Message> to chat in Global. Respect and don't flood." % (config.globalConfig.get_key('commandPrefix')),
                 0x3).build())
         else:
             user.send_crypto_packet(packetFactory.SystemMessagePacket(
-                "[Proxy] {yel}Global chat is disabled. Use %sgon to enable it, %sg <Message> to chat, and %sgmode to toggle team/system chat mode." % (config.globalConfig.get_key('commandPrefix'), config.globalConfig.get_key('commandPrefix'), config.globalConfig.get_key('commandPrefix')),
+                "{yel}Global chat is disabled. Use %sgon to enable it, %sg <Message> to chat, and %sgmode to toggle team/system chat mode." % (config.globalConfig.get_key('commandPrefix'), config.globalConfig.get_key('commandPrefix'), config.globalConfig.get_key('commandPrefix')),
                 0x3).build())
         if not client_preferences.has_preference("gchatMode"):
             client_preferences['gchatMode'] = -1
@@ -421,7 +421,7 @@ class GChat(commands.Command):
         for client_data in data.clients.connectedClients.values():
             if client_data.preferences.get_preference('globalChat') and client_data.get_handle() is not None:
                 if lookup_gchatmode(client_data.preferences) == 0:
-                    client_data.get_handle().send_crypto_packet(packetFactory.TeamChatPacket(client.playerId, "[%s] %s" % (shipl, data.players.playerList[client.playerId][0]), data.players.playerList[client.playerId][0], "%s%s" % (client_data.preferences.get_preference('globalChatPrefix'), self.args[3:])).build())
+                    client_data.get_handle().send_crypto_packet(packetFactory.TeamChatPacket(client.playerId, "[%s] %s" % (shipl, data.players.playerList[client.playerId][0]), data.players.playerList[client.playerId][0], "{vio}%s%s" % (client_data.preferences.get_preference('globalChatPrefix'), self.args[3:])).build())
                 else:
                     client_data.get_handle().send_crypto_packet(packetFactory.SystemMessagePacket("[%s] <%s> %s" % (shipl, data.players.playerList[client.playerId][0], "%s%s" % (client_data.preferences.get_preference('globalChatPrefix'), self.args[3:])), 0x3).build())
 
